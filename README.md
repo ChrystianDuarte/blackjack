@@ -639,35 +639,40 @@ In order to add autoscalling capabilities to a POD, for example a blackjack POD 
     
 -   blackjack-payment: cpu-limit: 700mi, mem-limit: 2Gi
     
-
+```
 $ oc project obp-api
-
+```
+```
 $ oc set probe dc/obp-deployment --readiness --get-url=http://:8080/obp/v4.0.0/rate-limiting --initial-delay-seconds=98 --timeout-seconds=5
+```
 
+```
 $ oc set resources dc/obp-deployment --limits=memory=2Gi,cpu=1 --requests=memory=700Mi
-
+```
   
-
+```
 $ oc project blackjack
-
+```
+```
 $ oc set probe dc/blackjack-payment --readiness --get-url=http://:8080/blackjack/api --initial-delay-seconds=50 --timeout-seconds=4
-
+```
+```
 $ oc set resources dc/blackjack-payment --limits=memory=2Gi,cpu=1
-
+```
   
 
 2. Change obi-api pod replicas from 1 to 2
-
+```
 $ oc scale dc obp-deployment --replicas=2 -n obi-api
-
+```
   
-
 Add autoscaling to blackjack-payment dc from 2 pods to 10
-
+```
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3MDg4NTMxMSwxNzM4OTAwODI5LDIwOD
-AyMzkwMjEsLTE5MzU0MDg3NTUsMTE0MDc5Mzg1NywxNzczOTky
-NzQ4LDg2MzQ5NzA0MSwtODMxNzQ5MjA1LDIxMTg2Mzk1NDUsMT
-I2NTExMjI3MiwtODUzNjg2NDUzXX0=
+eyJoaXN0b3J5IjpbMjI3NjEyODUxLDE3Mzg5MDA4MjksMjA4MD
+IzOTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzODU3LDE3NzM5OTI3
+NDgsODYzNDk3MDQxLC04MzE3NDkyMDUsMjExODYzOTU0NSwxMj
+Y1MTEyMjcyLC04NTM2ODY0NTNdfQ==
 -->
