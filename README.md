@@ -390,7 +390,7 @@ https://kiali-istio-system.apps.cluster-<GUID>.<GUID>.<SANDBOX>.opentlc.com
 
 
 
-## Download sources
+## Download sources (CHANGE)
 
 ```bash
 # Clone Sources
@@ -674,9 +674,10 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDIyMTIxNzgsLTEzNDY3MzM3MjQsLT
-E5MDc4OTU5OTUsMTAwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5
-MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzOD
-U3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC04MzE3NDkyMDUsMjEx
-ODYzOTU0NSwxMjY1MTEyMjcyLC04NTM2ODY0NTNdfQ==
+eyJoaXN0b3J5IjpbNDEzNzQ5MDIxLC0xOTAyMjEyMTc4LC0xMz
+Q2NzMzNzI0LC0xOTA3ODk1OTk1LDEwMDM4NjI5ODUsLTM0MjY4
+NjUwMSwxNzM4OTAwODI5LDIwODAyMzkwMjEsLTE5MzU0MDg3NT
+UsMTE0MDc5Mzg1NywxNzczOTkyNzQ4LDg2MzQ5NzA0MSwtODMx
+NzQ5MjA1LDIxMTg2Mzk1NDUsMTI2NTExMjI3MiwtODUzNjg2ND
+UzXX0=
 -->
