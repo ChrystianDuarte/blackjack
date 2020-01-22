@@ -496,9 +496,176 @@ ansible-playbook site.yml
 ```
 
 ##  2. OpenBanking Setup
+
+
+Clone git repo
+
+# git clone [https://github.com/tgubeli/blackjack.git](https://github.com/tgubeli/blackjack.git#master)  
+
+# cd blackjack/scripts/obp
+
+  
+
+Deploy OBP Data Base
+``
+$ oc new-project obp-data
+``
+```
+$ oc new-app --template=postgresql-persistent --param=NAMESPACE=openshift --param=DATABASE_SERVICE_NAME=postgresql --param=POSTGRESQL_USER=obpuser --param=POSTGRESQL_PASSWORD=obppassword --param=POSTGRESQL_DATABASE=obpuser --param=POSTGRESQL_VERSION=9.6
+]
+  
+
+Deploy OBP API
+
+$ oc new-project obp-api
+
+$ oc create -f obp-template-demojam
+
+$ oc process obp-api-example | oc create -f -
+
+  
+
+Restore data from Dump file
+
+1. Port forward the Portgres Pod:
+
+$ oc project obp-data
+
+$ oc get pods
+
+postgresql-1-pdsvc
+
+$ oc port-forward postgresql-1-pdsvc 5432:5432
+
+  
+
+2. Do the data restore:
+
+Open DBeaver desktop client
+
+Connect to DB (localhost:5432/obpuser) (Postgres 9.6 Driver)
+
+Right clic over DB > Tools > Restore
+
+Select dump file and restore
+
+More info: [https://www.youtube.com/watch?v=S5Zx8Lf9-Aw](https://www.youtube.com/watch?v=S5Zx8Lf9-Aw)  
+
+  
+
+Deploy Blackjack APIs
+
+$ oc new-project blackjack
+
+$ oc apply -f [https://raw.githubusercontent.com/jboss-fuse/application-templates/2.1.x.redhat-7-4-x/fis-image-streams.json](https://raw.githubusercontent.com/jboss-fuse/application-templates/2.1.x.redhat-7-4-x/fis-image-streams.json) -n openshift
+
+  
+
+$ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-status --name=blackjack-status
+
+$ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-users --name=blackjack-users
+
+$ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-payment --name=blackjack-payment
+
+$ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-ranking --name=blackjack-ranking
+
+  
+
+Change port and targetPort from all services from 8778(8778) to 8080(8080)
+
+(Do it manually)
+
+  
+
+Expose services
+
+# oc expose svc/blackjack-users
+
+# oc expose svc/blackjack-payment
+
+# oc expose svc/blackjack-ranking
+
+# oc expose svc/blackjack-status
+
+  
+
+Deploy Blackjack Frontend
+
+Fork [https://github.com/tgubeli/blackjack.git](https://github.com/tgubeli/blackjack.git) (you will need an GitHub account)
+
+Edit blackjack.js and dashboard.js (.../edit/master/public/blackjack.js and .../edit/master/public/dashboard.js)
+
+Find and change "GUID" variable value to your RHPDS GUID.
+
+Example: var guid = 'demojam-8b2e';
+
+Commit and push
+
+$ oc new-app nodejs:10~[https://github.com/<youruser>/blackjack.git](https://github.com/pseguel/blackjack.git)[#master](https://github.com/tgubeli/blackjack.git#master)  --context-dir=blackjack-frontend --name=blackjack-frontend
+
+Example: oc new-app nodejs:10~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-frontend --name=blackjack-frontend
+
+$ oc expose svc/blackjack-frontend
+
+  
+
+Enjoy!
+
+Go to your browser:
+
+Game: [http://blackjack-frontend-blackjack.apps.<GUID>.open.redhat.com/blackjack.html](http://blackjack-frontend-blackjack.apps.scjocp3-a9fc.open.redhat.com/blackjack.html) (enter a redhat email)
+
+Top Ten users: [http://blackjack-frontend-blackjack.apps.<GUID>.open.redhat.com/dashboard.html](http://blackjack-frontend-blackjack.apps.scjocp3-a9fc.open.redhat.com/blackjack.html)  
+
+  
+
+Optional: Enable Autoscalling
+
+In order to add autoscalling capabilities to a POD, for example a blackjack POD (payment or user services), we need to autoscale obp-api POD too and add some parameter to Postgres DB (obp-data).
+
+  
+
+1. Add Readiness Probe & Resource Limits:
+
+-   obp-api: /obp/v4.0.0/rate-limiting, port: 8080, initial delay: 98, timeout: 5
+    
+-   obp-api: cpu-limit: 1core, min-mem:700mb, mem-limit: 2Gi
+    
+-   blackjack-payment: /blackjack/api, port: 8080, initial delay: 50, timeout: 4
+    
+-   blackjack-payment: cpu-limit: 700mi, mem-limit: 2Gi
+    
+
+  
+
+$ oc project obp-api
+
+$ oc set probe dc/obp-deployment --readiness --get-url=http://:8080/obp/v4.0.0/rate-limiting --initial-delay-seconds=98 --timeout-seconds=5
+
+$ oc set resources dc/obp-deployment --limits=memory=2Gi,cpu=1 --requests=memory=700Mi
+
+  
+
+$ oc project blackjack
+
+$ oc set probe dc/blackjack-payment --readiness --get-url=http://:8080/blackjack/api --initial-delay-seconds=50 --timeout-seconds=4
+
+$ oc set resources dc/blackjack-payment --limits=memory=2Gi,cpu=1
+
+  
+
+2. Change obi-api pod replicas from 1 to 2
+
+$ oc scale dc obp-deployment --replicas=2 -n obi-api
+
+  
+
+Add autoscaling to blackjack-payment dc from 2 pods to 10
+
+$ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwxMT
-QwNzkzODU3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC04MzE3NDky
-MDUsMjExODYzOTU0NSwxMjY1MTEyMjcyLC04NTM2ODY0NTNdfQ
-==
+eyJoaXN0b3J5IjpbODc2NTEyOTcyLDIwODAyMzkwMjEsLTE5Mz
+U0MDg3NTUsMTE0MDc5Mzg1NywxNzczOTkyNzQ4LDg2MzQ5NzA0
+MSwtODMxNzQ5MjA1LDIxMTg2Mzk1NDUsMTI2NTExMjI3MiwtOD
+UzNjg2NDUzXX0=
 -->
