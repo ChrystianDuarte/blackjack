@@ -604,13 +604,14 @@ Find and change "GUID" variable value to your RHPDS GUID.
 Example: var guid = 'demojam-8b2e';
 
 Commit and push
-
+```
 $ oc new-app nodejs:10~[https://github.com/<youruser>/blackjack.git](https://github.com/pseguel/blackjack.git)[#master](https://github.com/tgubeli/blackjack.git#master)  --context-dir=blackjack-frontend --name=blackjack-frontend
 
 Example: oc new-app nodejs:10~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-frontend --name=blackjack-frontend
-
+```
+```
 $ oc expose svc/blackjack-frontend
-
+```
   
 
 Enjoy!
@@ -623,12 +624,11 @@ Top Ten users: [http://blackjack-frontend-blackjack.apps.<GUID>.open.redhat.com/
 
   
 
-Optional: Enable Autoscalling
+## Optional: Enable Autoscalling
 
 In order to add autoscalling capabilities to a POD, for example a blackjack POD (payment or user services), we need to autoscale obp-api POD too and add some parameter to Postgres DB (obp-data).
 
   
-
 1. Add Readiness Probe & Resource Limits:
 
 -   obp-api: /obp/v4.0.0/rate-limiting, port: 8080, initial delay: 98, timeout: 5
@@ -639,8 +639,6 @@ In order to add autoscalling capabilities to a POD, for example a blackjack POD 
     
 -   blackjack-payment: cpu-limit: 700mi, mem-limit: 2Gi
     
-
-  
 
 $ oc project obp-api
 
@@ -668,7 +666,7 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4ODQwOTc4OSwxNzM4OTAwODI5LDIwOD
+eyJoaXN0b3J5IjpbLTk3MDg4NTMxMSwxNzM4OTAwODI5LDIwOD
 AyMzkwMjEsLTE5MzU0MDg3NTUsMTE0MDc5Mzg1NywxNzczOTky
 NzQ4LDg2MzQ5NzA0MSwtODMxNzQ5MjA1LDIxMTg2Mzk1NDUsMT
 I2NTExMjI3MiwtODUzNjg2NDUzXX0=
