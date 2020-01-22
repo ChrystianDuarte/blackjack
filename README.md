@@ -540,15 +540,10 @@ $ oc port-forward postgresql-1-pdsvc 5432:5432
 ```
   
 2. Do the data restore:
- - [ ] List item
-
-Open DBeaver desktop client
-
-Connect to DB (localhost:5432/obpuser) (Postgres 9.6 Driver)
-
-Right clic over DB > Tools > Restore
-
-Select dump file and restore
+ - [1]  Open DBeaver desktop client
+ - [2] Connect to DB (localhost:5432/obpuser) (Postgres 9.6 Driver)
+ - [3 ] Right clic over DB > Tools > Restore
+ - [4] Select dump file and restore
 
 More info: [https://www.youtube.com/watch?v=S5Zx8Lf9-Aw](https://www.youtube.com/watch?v=S5Zx8Lf9-Aw)  
 
@@ -668,7 +663,7 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzMzkxMzQxMSwxNzM4OTAwODI5LDIwOD
+eyJoaXN0b3J5IjpbLTM0MjY4NjUwMSwxNzM4OTAwODI5LDIwOD
 AyMzkwMjEsLTE5MzU0MDg3NTUsMTE0MDc5Mzg1NywxNzczOTky
 NzQ4LDg2MzQ5NzA0MSwtODMxNzQ5MjA1LDIxMTg2Mzk1NDUsMT
 I2NTExMjI3MiwtODUzNjg2NDUzXX0=
