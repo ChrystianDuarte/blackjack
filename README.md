@@ -535,13 +535,13 @@ $ oc project obp-data
 ```
 ```
 $ oc get pods
-```
+
 postgresql-1-pdsvc
-
+```
+```
 $ oc port-forward postgresql-1-pdsvc 5432:5432
-
+```
   
-
 2. Do the data restore:
 
 Open DBeaver desktop client
@@ -667,8 +667,8 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzc1NTI2NTcsMjA4MDIzOTAyMSwtMT
-kzNTQwODc1NSwxMTQwNzkzODU3LDE3NzM5OTI3NDgsODYzNDk3
-MDQxLC04MzE3NDkyMDUsMjExODYzOTU0NSwxMjY1MTEyMjcyLC
-04NTM2ODY0NTNdfQ==
+eyJoaXN0b3J5IjpbMTczODkwMDgyOSwyMDgwMjM5MDIxLC0xOT
+M1NDA4NzU1LDExNDA3OTM4NTcsMTc3Mzk5Mjc0OCw4NjM0OTcw
+NDEsLTgzMTc0OTIwNSwyMTE4NjM5NTQ1LDEyNjUxMTIyNzIsLT
+g1MzY4NjQ1M119
 -->
