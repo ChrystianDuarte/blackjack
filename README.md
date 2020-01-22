@@ -494,7 +494,7 @@ Example: var guid = 'demojam-8b2e';
 
 Commit and push
 ```
-$ oc new-app nodejs:10~[https://github.com/<youruser>/blackjack.git](https://github.com/pseguel/blackjack.git)[#master](https://github.com/tgubeli/blackjack.git#master)  --context-dir=blackjack-frontend --name=blackjack-frontend
+$ oc new-app nodejs:10~https://github.com/tgubeli/blackjack.git#master --context-dir=blackjack-frontend --name=blackjack-frontend
 
 Example: oc new-app nodejs:10~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-frontend --name=blackjack-frontend
 ```
@@ -672,11 +672,11 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2MzM5Mzg2OCwzMjM3NjY1MCwtMTU3MD
-YzOTI1MCwxMTIyNjMyMDQyLDEwOTM5NTgwLC0xOTAyMjEyMTc4
-LC0xMzQ2NzMzNzI0LC0xOTA3ODk1OTk1LDEwMDM4NjI5ODUsLT
-M0MjY4NjUwMSwxNzM4OTAwODI5LDIwODAyMzkwMjEsLTE5MzU0
-MDg3NTUsMTE0MDc5Mzg1NywxNzczOTkyNzQ4LDg2MzQ5NzA0MS
-wtODMxNzQ5MjA1LDIxMTg2Mzk1NDUsMTI2NTExMjI3MiwtODUz
-Njg2NDUzXX0=
+eyJoaXN0b3J5IjpbLTY2Nzg3NDkyMCwxOTYzMzkzODY4LDMyMz
+c2NjUwLC0xNTcwNjM5MjUwLDExMjI2MzIwNDIsMTA5Mzk1ODAs
+LTE5MDIyMTIxNzgsLTEzNDY3MzM3MjQsLTE5MDc4OTU5OTUsMT
+AwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5MDA4MjksMjA4MDIz
+OTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzODU3LDE3NzM5OTI3ND
+gsODYzNDk3MDQxLC04MzE3NDkyMDUsMjExODYzOTU0NSwxMjY1
+MTEyMjcyXX0=
 -->
