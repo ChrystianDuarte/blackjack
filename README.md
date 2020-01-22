@@ -451,7 +451,7 @@ Deploy Blackjack APIs
 $ oc new-project blackjack
 ```
 ```
-$ oc apply -f [https://raw.githubusercontent.com/jboss-fuse/application-templates/2.1.x.redhat-7-4-x/fis-image-streams.json](https://raw.githubusercontent.com/jboss-fuse/application-templates/2.1.x.redhat-7-4-x/fis-image-streams.json) -n openshift
+$ oc apply -f https://raw.githubusercontent.com/jboss-fuse/application-templates/2.1.x.redhat-7-4-x/fis-image-streams.json -n openshift
 
   
 
@@ -672,10 +672,11 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzA2MzkyNTAsMTEyMjYzMjA0MiwxMD
-kzOTU4MCwtMTkwMjIxMjE3OCwtMTM0NjczMzcyNCwtMTkwNzg5
-NTk5NSwxMDAzODYyOTg1LC0zNDI2ODY1MDEsMTczODkwMDgyOS
-wyMDgwMjM5MDIxLC0xOTM1NDA4NzU1LDExNDA3OTM4NTcsMTc3
-Mzk5Mjc0OCw4NjM0OTcwNDEsLTgzMTc0OTIwNSwyMTE4NjM5NT
-Q1LDEyNjUxMTIyNzIsLTg1MzY4NjQ1M119
+eyJoaXN0b3J5IjpbMjExMzAxNzUzMiwtMTU3MDYzOTI1MCwxMT
+IyNjMyMDQyLDEwOTM5NTgwLC0xOTAyMjEyMTc4LC0xMzQ2NzMz
+NzI0LC0xOTA3ODk1OTk1LDEwMDM4NjI5ODUsLTM0MjY4NjUwMS
+wxNzM4OTAwODI5LDIwODAyMzkwMjEsLTE5MzU0MDg3NTUsMTE0
+MDc5Mzg1NywxNzczOTkyNzQ4LDg2MzQ5NzA0MSwtODMxNzQ5Mj
+A1LDIxMTg2Mzk1NDUsMTI2NTExMjI3MiwtODUzNjg2NDUzXX0=
+
 -->
