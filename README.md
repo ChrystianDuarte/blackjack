@@ -4,6 +4,8 @@ Black Jack Front End Demo for Open Banking at Scale Demo
 
 
 
+## Enable Service Mesh
+
 ## Download sources
 
 ```bash
@@ -105,7 +107,7 @@ openshift_username: axxxxx
 # Openshift Password
 openshift_password: "redhat password"
 # Project used to deploy Service Mesh Control Plane
-control_plane_project_name: "bookretail-istio-system"
+control_plane_project_name: "istio-system"
 # Namespace that will be included into Service Mesh Scope
 service_mesh_member_roll_namespaces: " bookinfo"
 ```
@@ -118,5 +120,5 @@ To execute the playbook use the following command
 ansible-playbook site.yml
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3MDIyNzQ1XX0=
+eyJoaXN0b3J5IjpbLTE4ODc3MzU1MDFdfQ==
 -->
