@@ -40,13 +40,7 @@ In this section of the lab, you will install these operator dependencies from th
 #### 1.1.2. Install Elasticsearch Operator
 
 1.  In the  _OperatorHub_  catalog of your OCP Web Console, type  **Elasticsearch**  into the filter box to locate the Elasticsearch Operator.
-    
-    ![img/operatorhub_es.png](https://cloud.scorm.com/content/courses/A9KI96X2QE/5bf72b4b0f94/3/02_Service_Mesh_Installation/images/operatorhub_es.png)
-
-![title](img/operatorhub_es.png)
-
-![img/operatorhub_es.png]
-
+   
 ![system schema](img/operatorhub_es.png)
 
     
@@ -503,7 +497,7 @@ ansible-playbook site.yml
 
 ##  2. OpenBanking Setup
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3Mzk5Mjc0OCw4NjM0OTcwNDEsLTgzMT
-c0OTIwNSwyMTE4NjM5NTQ1LDEyNjUxMTIyNzIsLTg1MzY4NjQ1
-M119
+eyJoaXN0b3J5IjpbMTE0MDc5Mzg1NywxNzczOTkyNzQ4LDg2Mz
+Q5NzA0MSwtODMxNzQ5MjA1LDIxMTg2Mzk1NDUsMTI2NTExMjI3
+MiwtODUzNjg2NDUzXX0=
 -->
