@@ -5,10 +5,12 @@ Credits:
 Colaborartor: 
 Tomas Gubelli - https://github.com/tgubeli/blackjack 
 Francisco Meneses - https://github.com/fmenesesg
-Paulo Seguel - 
+Paulo Seguel - https://github.com/pseguel/
 Chrystian Duarte
 Event: Tech Excahnge 2019
 Openbank at Scale Team
+
+Third party: OpenBankProject
 
 ## 1. Set Up Red Hat OpenShift Service Mesh on Cluster
 
@@ -672,8 +674,9 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mz
-g5MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwxMTQwNzkz
-ODU3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC04MzE3NDkyMDUsMj
-ExODYzOTU0NSwxMjY1MTEyMjcyLC04NTM2ODY0NTNdfQ==
+eyJoaXN0b3J5IjpbLTE5MDc4OTU5OTUsMTAwMzg2Mjk4NSwtMz
+QyNjg2NTAxLDE3Mzg5MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQw
+ODc1NSwxMTQwNzkzODU3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC
+04MzE3NDkyMDUsMjExODYzOTU0NSwxMjY1MTEyMjcyLC04NTM2
+ODY0NTNdfQ==
 -->
