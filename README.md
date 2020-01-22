@@ -172,8 +172,11 @@ In this section of the lab, you will install these operator dependencies from th
     kiali-operator-64c8487b6f-pp4k9   1/1     Running   0          1d2h
     ```
     
+### 1.2. Set Up Service Mesh Operator Red Hat (Recomended)
 
-### 1.2. Set Up Service Mesh Operator (change)
+
+
+### 1.2. Set Up Service Mesh Operator Maintra (optional)
 
 Now that pre-req operators have been installed, the next step in installing the service mesh is to install the service mesh operator.
 
@@ -672,11 +675,11 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ0NDgyNjM4LC0xODUzMjY2MDY3LDIwNT
-E4NjczNDcsLTE4NjY1NDc3ODEsMTk2MzM5Mzg2OCwzMjM3NjY1
-MCwtMTU3MDYzOTI1MCwxMTIyNjMyMDQyLDEwOTM5NTgwLC0xOT
-AyMjEyMTc4LC0xMzQ2NzMzNzI0LC0xOTA3ODk1OTk1LDEwMDM4
-NjI5ODUsLTM0MjY4NjUwMSwxNzM4OTAwODI5LDIwODAyMzkwMj
-EsLTE5MzU0MDg3NTUsMTE0MDc5Mzg1NywxNzczOTkyNzQ4LDg2
-MzQ5NzA0MV19
+eyJoaXN0b3J5IjpbMjA5NzQ3OTAwMCwyNDQ0ODI2MzgsLTE4NT
+MyNjYwNjcsMjA1MTg2NzM0NywtMTg2NjU0Nzc4MSwxOTYzMzkz
+ODY4LDMyMzc2NjUwLC0xNTcwNjM5MjUwLDExMjI2MzIwNDIsMT
+A5Mzk1ODAsLTE5MDIyMTIxNzgsLTEzNDY3MzM3MjQsLTE5MDc4
+OTU5OTUsMTAwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5MDA4Mj
+ksMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzODU3LDE3
+NzM5OTI3NDhdfQ==
 -->
