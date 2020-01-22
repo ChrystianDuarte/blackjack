@@ -457,11 +457,11 @@ $ oc apply -f https://raw.githubusercontent.com/jboss-fuse/application-templates
 
 $ oc new-app fuse7-java-openshift:1.4~https://github.com/ChrystianDuarte/blackjack.git#master --context-dir=blackjack-status --name=blackjack-status
 
-$ oc new-app fuse7-java-openshift:1.4~https://github.com/tgubeli/blackjack.git#master --context-dir=blackjack-users --name=blackjack-users
+$ oc new-app fuse7-java-openshift:1.4~https://github.com/ChrystianDuarte/blackjack.git#master --context-dir=blackjack-users --name=blackjack-users
 
-$ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-payment --name=blackjack-payment
+$ oc new-app fuse7-java-openshift:1.4~[https://github.com/ChrystianDuarte/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-payment --name=blackjack-payment
 
-$ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-ranking --name=blackjack-ranking
+$ oc new-app fuse7-java-openshift:1.4~[https://github.com/ChrystianDuarte/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-ranking --name=blackjack-ranking
 ```
  
 Change port and targetPort from all services from 8778(8778) to 8080(8080)
@@ -672,11 +672,10 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NDYyNDg3NTIsLTE1NzA2MzkyNTAsMT
-EyMjYzMjA0MiwxMDkzOTU4MCwtMTkwMjIxMjE3OCwtMTM0Njcz
-MzcyNCwtMTkwNzg5NTk5NSwxMDAzODYyOTg1LC0zNDI2ODY1MD
-EsMTczODkwMDgyOSwyMDgwMjM5MDIxLC0xOTM1NDA4NzU1LDEx
-NDA3OTM4NTcsMTc3Mzk5Mjc0OCw4NjM0OTcwNDEsLTgzMTc0OT
-IwNSwyMTE4NjM5NTQ1LDEyNjUxMTIyNzIsLTg1MzY4NjQ1M119
-
+eyJoaXN0b3J5IjpbMzIzNzY2NTAsLTE1NzA2MzkyNTAsMTEyMj
+YzMjA0MiwxMDkzOTU4MCwtMTkwMjIxMjE3OCwtMTM0NjczMzcy
+NCwtMTkwNzg5NTk5NSwxMDAzODYyOTg1LC0zNDI2ODY1MDEsMT
+czODkwMDgyOSwyMDgwMjM5MDIxLC0xOTM1NDA4NzU1LDExNDA3
+OTM4NTcsMTc3Mzk5Mjc0OCw4NjM0OTcwNDEsLTgzMTc0OTIwNS
+wyMTE4NjM5NTQ1LDEyNjUxMTIyNzIsLTg1MzY4NjQ1M119
 -->
