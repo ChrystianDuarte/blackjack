@@ -1,6 +1,17 @@
 # Blackjack and OpenBanking
 Black Jack Front End Demo for Open Banking at Scale Demo
 
+Credits: 
+Colaborartor: 
+Tomas Gubelli - https://github.com/tgubeli/blackjack 
+Francisco Meneses - https://github.com/fmenesesg
+Paulo Seguel - https://github.com/pseguel/
+Chrystian Duarte
+Event: Tech Excahnge 2019
+Openbank at Scale Team
+
+Third party: OpenBankProject
+
 ## 1. Set Up Red Hat OpenShift Service Mesh on Cluster
 
 Installing the Service Mesh involves :
@@ -162,7 +173,7 @@ In this section of the lab, you will install these operator dependencies from th
     ```
     
 
-### 1.2. Set Up Service Mesh Operator
+### 1.2. Set Up Service Mesh Operator (change)
 
 Now that pre-req operators have been installed, the next step in installing the service mesh is to install the service mesh operator.
 
@@ -312,9 +323,9 @@ In this section of the lab, you define a  _ServiceMeshControlPlane_  and apply i
     servicemeshcontrolplane.maistra.io/service-mesh-installation created
     
 5.  Watch the progress of the deployment:
-    
+    ```
     watch oc get pods -n istio-system
-    
+    ```
     -   It takes a minute or two before pods start appearing, and you may see some pods temporarily in  `Error`  and  `CrashLoopBackoff`  states that resolve themselves within a few seconds.
         
         NOTE
@@ -323,7 +334,7 @@ In this section of the lab, you define a  _ServiceMeshControlPlane_  and apply i
         
     
 6.  Once the operator completes the installation successfully, confirm that you see the following pods all running successfully:
-    
+    ```
      1: NAME                                      READY   STATUS    RESTARTS   AGE
      2: grafana-86dc5978b8-m7wqf                  1/1     Running   0          80s
      3: istio-citadel-6656fc5b9b-dc8dr            1/1     Running   0          6m38s
@@ -341,6 +352,7 @@ In this section of the lab, you define a  _ServiceMeshControlPlane_  and apply i
 7.  Press  **Ctrl+C**  to exit the  _watch_.
     
 8.  Examine the created routes in the  `istio-system`  project:
+    
     ```
     oc get routes -n istio-system
     ```
@@ -378,14 +390,134 @@ https://kiali-istio-system.apps.cluster-<GUID>.<GUID>.<SANDBOX>.opentlc.com
 
 
 
-## Download sources
 
-```bash
-# Clone Sources
-git clone https://github.com/fmenesesg/osm-homework.git
+##  2. OpenBanking Setup
+
+Clone git repo 
+```
+$ git clone [https://github.com/ChrystianDuarte/blackjack.git](https://github.com/ChrystianDuarte/blackjack.git#master)  
+$ cd blackjack/scripts/obp
+```
+
+Deploy OBP Data Base
+
+```
+$ oc new-project obp-data
+```
+```
+$ oc new-app --template=postgresql-persistent --param=NAMESPACE=openshift --param=DATABASE_SERVICE_NAME=postgresql --param=POSTGRESQL_USER=obpuser --param=POSTGRESQL_PASSWORD=obppassword --param=POSTGRESQL_DATABASE=obpuser --param=POSTGRESQL_VERSION=9.6
+```
+  
+Deploy OBP API
+```
+$ oc new-project obp-api
+```
+```
+$ oc create -f obp-template-demojam
+```
+```
+$ oc process obp-api-example | oc create -f -
+```
+  
+
+Restore data from Dump file
+
+1. Port forward the Portgres Pod:
+
+```
+$ oc project obp-data
+```
+```
+$ oc get pods
+
+postgresql-1-pdsvc
+```
+```
+$ oc port-forward postgresql-1-pdsvc 5432:5432
+```
+  
+2. Do the data restore:
+ - [1]  Open DBeaver desktop client
+ - [2] Connect to DB (localhost:5432/obpuser) (Postgres 9.6 Driver)
+ - [3 ] Right clic over DB > Tools > Restore
+ - [4] Select dump file and restore
+
+More info: [https://www.youtube.com/watch?v=S5Zx8Lf9-Aw](https://www.youtube.com/watch?v=S5Zx8Lf9-Aw)  
+
+ 
+Deploy Blackjack APIs
+
+```
+$ oc new-project blackjack
+```
+```
+$ oc apply -f https://raw.githubusercontent.com/jboss-fuse/application-templates/2.1.x.redhat-7-4-x/fis-image-streams.json -n openshift
+
+  
+
+$ oc new-app fuse7-java-openshift:1.4~https://github.com/ChrystianDuarte/blackjack.git#master --context-dir=blackjack-status --name=blackjack-status
+
+$ oc new-app fuse7-java-openshift:1.4~https://github.com/ChrystianDuarte/blackjack.git#master --context-dir=blackjack-users --name=blackjack-users
+
+$ oc new-app fuse7-java-openshift:1.4~https://github.com/ChrystianDuarte/blackjack.git#master --context-dir=blackjack-payment --name=blackjack-payment
+
+$ oc new-app fuse7-java-openshift:1.4~https://github.com/ChrystianDuarte/blackjack.git#master --context-dir=blackjack-ranking --name=blackjack-ranking
+```
+ 
+Change port and targetPort from all services from 8778(8778) to 8080(8080)
+
+(Do it manually)
+
+```
+Expose services
+
+# oc expose svc/blackjack-users
+
+# oc expose svc/blackjack-payment
+
+# oc expose svc/blackjack-ranking
+
+# oc expose svc/blackjack-status
+```
+  
+
+Deploy Blackjack Frontend
+
+
+Fork [https://github.com/ChrystianDuarte/blackjack.git](https://github.com/tgubeli/blackjack.git) (you will need an GitHub account)
+
+Edit blackjack.js and dashboard.js (.../edit/master/public/blackjack.js and .../edit/master/public/dashboard.js)
+
+Find and change "GUID" variable value to your RHPDS GUID.
+
+Example: var guid = 'demojam-8b2e';
+
+Commit and push
+```
+$ oc new-app nodejs:10~https://github.com/ChrystianDuarte/blackjack.git#master --context-dir=blackjack-frontend --name=blackjack-frontend
+
+Example: oc new-app nodejs:10~https://github.com/ChrystianDuarte/blackjack.git#master --context-dir=blackjack-frontend --name=blackjack-frontend
+```
+```
+$ oc expose svc/blackjack-frontend
+```
+
+Enjoy!
+
+Go to your browser:
+
+Game: [http://blackjack-frontend-blackjack.apps.<"GUID">.open.redhat.com/blackjack.html](http://blackjack-frontend-blackjack.apps.scjocp3-a9fc.open.redhat.com/blackjack.html) (enter a redhat email)
+
+Top Ten users: [http://blackjack-frontend-blackjack.apps.<"GUID">.open.redhat.com/dashboard.html](http://blackjack-frontend-blackjack.apps.scjocp3-a9fc.open.redhat.com/blackjack.html)  
+
+
+## Apply Service Mesh configurations
+
 
 # Go to homework-rhoar
-cd osm-homework
+
+```bash
+cd osm
 ```
 
 ## Pre Req
@@ -416,7 +548,7 @@ oc apply -f https://raw.githubusercontent.com/istio/istio/1.4.0/samples/bookinfo
 oc expose service productpage
 ```
 
-## Apply Service Mesh configurations
+## Apply Service Mesh for Namespace Blackjack
 
 The goal of the homework is to enable service mesh capabilities on the bookinfo namespace.
 The features that need to be enable are:
@@ -433,7 +565,7 @@ In order to acomplish previus requirements and this homework principal goal, I h
 ```bash
 [francisco@fmeneses homework]$ tree .
 .
-├── osm-homework
+├── osm
 │   ├── group_vars
 │   │   └── all
 │   ├── roles
@@ -451,8 +583,6 @@ In order to acomplish previus requirements and this homework principal goal, I h
 │   │           ├── virtualservice.yml
 │   │           └── wildcard-gateway.yml
 │   └── site.yml
-└── README.md
-
 ```
 
 * group_vars/all: Global playbook variables
@@ -495,139 +625,11 @@ To execute the playbook use the following command
 ansible-playbook site.yml
 ```
 
-##  2. OpenBanking Setup
-
-
-Clone git repo
-
-# git clone [https://github.com/tgubeli/blackjack.git](https://github.com/tgubeli/blackjack.git#master)  
-
-# cd blackjack/scripts/obp
-
-  
-
-Deploy OBP Data Base
-``
-$ oc new-project obp-data
-``
-```
-$ oc new-app --template=postgresql-persistent --param=NAMESPACE=openshift --param=DATABASE_SERVICE_NAME=postgresql --param=POSTGRESQL_USER=obpuser --param=POSTGRESQL_PASSWORD=obppassword --param=POSTGRESQL_DATABASE=obpuser --param=POSTGRESQL_VERSION=9.6
-```
-  
-Deploy OBP API
-```
-$ oc new-project obp-api
-```
-```
-$ oc create -f obp-template-demojam
-```
-```
-$ oc process obp-api-example | oc create -f -
-```
-  
-
-Restore data from Dump file
-
-1. Port forward the Portgres Pod:
-
-```
-$ oc project obp-data
-```
-```
-$ oc get pods
-
-postgresql-1-pdsvc
-```
-```
-$ oc port-forward postgresql-1-pdsvc 5432:5432
-```
-  
-2. Do the data restore:
-
-Open DBeaver desktop client
-
-Connect to DB (localhost:5432/obpuser) (Postgres 9.6 Driver)
-
-Right clic over DB > Tools > Restore
-
-Select dump file and restore
-
-More info: [https://www.youtube.com/watch?v=S5Zx8Lf9-Aw](https://www.youtube.com/watch?v=S5Zx8Lf9-Aw)  
-
-  
-
-Deploy Blackjack APIs
-
-$ oc new-project blackjack
-
-$ oc apply -f [https://raw.githubusercontent.com/jboss-fuse/application-templates/2.1.x.redhat-7-4-x/fis-image-streams.json](https://raw.githubusercontent.com/jboss-fuse/application-templates/2.1.x.redhat-7-4-x/fis-image-streams.json) -n openshift
-
-  
-
-$ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-status --name=blackjack-status
-
-$ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-users --name=blackjack-users
-
-$ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-payment --name=blackjack-payment
-
-$ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-ranking --name=blackjack-ranking
-
-  
-
-Change port and targetPort from all services from 8778(8778) to 8080(8080)
-
-(Do it manually)
-
-  
-
-Expose services
-
-# oc expose svc/blackjack-users
-
-# oc expose svc/blackjack-payment
-
-# oc expose svc/blackjack-ranking
-
-# oc expose svc/blackjack-status
-
-  
-
-Deploy Blackjack Frontend
-
-Fork [https://github.com/tgubeli/blackjack.git](https://github.com/tgubeli/blackjack.git) (you will need an GitHub account)
-
-Edit blackjack.js and dashboard.js (.../edit/master/public/blackjack.js and .../edit/master/public/dashboard.js)
-
-Find and change "GUID" variable value to your RHPDS GUID.
-
-Example: var guid = 'demojam-8b2e';
-
-Commit and push
-
-$ oc new-app nodejs:10~[https://github.com/<youruser>/blackjack.git](https://github.com/pseguel/blackjack.git)[#master](https://github.com/tgubeli/blackjack.git#master)  --context-dir=blackjack-frontend --name=blackjack-frontend
-
-Example: oc new-app nodejs:10~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-frontend --name=blackjack-frontend
-
-$ oc expose svc/blackjack-frontend
-
-  
-
-Enjoy!
-
-Go to your browser:
-
-Game: [http://blackjack-frontend-blackjack.apps.<GUID>.open.redhat.com/blackjack.html](http://blackjack-frontend-blackjack.apps.scjocp3-a9fc.open.redhat.com/blackjack.html) (enter a redhat email)
-
-Top Ten users: [http://blackjack-frontend-blackjack.apps.<GUID>.open.redhat.com/dashboard.html](http://blackjack-frontend-blackjack.apps.scjocp3-a9fc.open.redhat.com/blackjack.html)  
-
-  
-
-Optional: Enable Autoscalling
+## Optional: Enable Autoscalling
 
 In order to add autoscalling capabilities to a POD, for example a blackjack POD (payment or user services), we need to autoscale obp-api POD too and add some parameter to Postgres DB (obp-data).
 
   
-
 1. Add Readiness Probe & Resource Limits:
 
 -   obp-api: /obp/v4.0.0/rate-limiting, port: 8080, initial delay: 98, timeout: 5
@@ -638,37 +640,43 @@ In order to add autoscalling capabilities to a POD, for example a blackjack POD 
     
 -   blackjack-payment: cpu-limit: 700mi, mem-limit: 2Gi
     
-
-  
-
+```
 $ oc project obp-api
-
+```
+```
 $ oc set probe dc/obp-deployment --readiness --get-url=http://:8080/obp/v4.0.0/rate-limiting --initial-delay-seconds=98 --timeout-seconds=5
+```
 
+```
 $ oc set resources dc/obp-deployment --limits=memory=2Gi,cpu=1 --requests=memory=700Mi
-
+```
   
-
+```
 $ oc project blackjack
-
+```
+```
 $ oc set probe dc/blackjack-payment --readiness --get-url=http://:8080/blackjack/api --initial-delay-seconds=50 --timeout-seconds=4
-
+```
+```
 $ oc set resources dc/blackjack-payment --limits=memory=2Gi,cpu=1
-
+```
   
 
 2. Change obi-api pod replicas from 1 to 2
-
+```
 $ oc scale dc obp-deployment --replicas=2 -n obi-api
-
+```
   
-
 Add autoscaling to blackjack-payment dc from 2 pods to 10
-
+```
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczODkwMDgyOSwyMDgwMjM5MDIxLC0xOT
-M1NDA4NzU1LDExNDA3OTM4NTcsMTc3Mzk5Mjc0OCw4NjM0OTcw
-NDEsLTgzMTc0OTIwNSwyMTE4NjM5NTQ1LDEyNjUxMTIyNzIsLT
-g1MzY4NjQ1M119
+eyJoaXN0b3J5IjpbMjA1MTg2NzM0NywtMTg2NjU0Nzc4MSwxOT
+YzMzkzODY4LDMyMzc2NjUwLC0xNTcwNjM5MjUwLDExMjI2MzIw
+NDIsMTA5Mzk1ODAsLTE5MDIyMTIxNzgsLTEzNDY3MzM3MjQsLT
+E5MDc4OTU5OTUsMTAwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5
+MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzOD
+U3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC04MzE3NDkyMDUsMjEx
+ODYzOTU0NV19
 -->
