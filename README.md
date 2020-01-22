@@ -547,7 +547,7 @@ oc apply -f https://raw.githubusercontent.com/istio/istio/1.4.0/samples/bookinfo
 oc expose service productpage
 ```
 
-## Apply Service Mesh configurations
+## Apply Service Mesh for Namespace Blackjack
 
 The goal of the homework is to enable service mesh capabilities on the bookinfo namespace.
 The features that need to be enable are:
@@ -564,7 +564,7 @@ In order to acomplish previus requirements and this homework principal goal, I h
 ```bash
 [francisco@fmeneses homework]$ tree .
 .
-├── osm-homework
+├── osm
 │   ├── group_vars
 │   │   └── all
 │   ├── roles
@@ -582,8 +582,6 @@ In order to acomplish previus requirements and this homework principal goal, I h
 │   │           ├── virtualservice.yml
 │   │           └── wildcard-gateway.yml
 │   └── site.yml
-└── README.md
-
 ```
 
 * group_vars/all: Global playbook variables
@@ -673,10 +671,10 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyNzA5MjIwMywtMTkwMjIxMjE3OCwtMT
-M0NjczMzcyNCwtMTkwNzg5NTk5NSwxMDAzODYyOTg1LC0zNDI2
-ODY1MDEsMTczODkwMDgyOSwyMDgwMjM5MDIxLC0xOTM1NDA4Nz
-U1LDExNDA3OTM4NTcsMTc3Mzk5Mjc0OCw4NjM0OTcwNDEsLTgz
-MTc0OTIwNSwyMTE4NjM5NTQ1LDEyNjUxMTIyNzIsLTg1MzY4Nj
-Q1M119
+eyJoaXN0b3J5IjpbMTA5Mzk1ODAsLTE5MDIyMTIxNzgsLTEzND
+Y3MzM3MjQsLTE5MDc4OTU5OTUsMTAwMzg2Mjk4NSwtMzQyNjg2
+NTAxLDE3Mzg5MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQwODc1NS
+wxMTQwNzkzODU3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC04MzE3
+NDkyMDUsMjExODYzOTU0NSwxMjY1MTEyMjcyLC04NTM2ODY0NT
+NdfQ==
 -->
