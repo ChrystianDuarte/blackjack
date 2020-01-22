@@ -540,6 +540,7 @@ $ oc port-forward postgresql-1-pdsvc 5432:5432
 ```
   
 2. Do the data restore:
+ - [ ] List item
 
 Open DBeaver desktop client
 
@@ -551,8 +552,7 @@ Select dump file and restore
 
 More info: [https://www.youtube.com/watch?v=S5Zx8Lf9-Aw](https://www.youtube.com/watch?v=S5Zx8Lf9-Aw)  
 
-  
-
+ 
 Deploy Blackjack APIs
 
 ```
@@ -668,8 +668,8 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzgyNzQzMzcsMTczODkwMDgyOSwyMD
-gwMjM5MDIxLC0xOTM1NDA4NzU1LDExNDA3OTM4NTcsMTc3Mzk5
-Mjc0OCw4NjM0OTcwNDEsLTgzMTc0OTIwNSwyMTE4NjM5NTQ1LD
-EyNjUxMTIyNzIsLTg1MzY4NjQ1M119
+eyJoaXN0b3J5IjpbMTAzMzkxMzQxMSwxNzM4OTAwODI5LDIwOD
+AyMzkwMjEsLTE5MzU0MDg3NTUsMTE0MDc5Mzg1NywxNzczOTky
+NzQ4LDg2MzQ5NzA0MSwtODMxNzQ5MjA1LDIxMTg2Mzk1NDUsMT
+I2NTExMjI3MiwtODUzNjg2NDUzXX0=
 -->
