@@ -174,7 +174,29 @@ In this section of the lab, you will install these operator dependencies from th
     
 ### 1.2. Set Up Service Mesh Operator Red Hat (Recomended)
 
-
+1.  In the  _OperatorHub_  catalog of your OCP Web Console, type  **# Red Hat OpenShift Service Mesh**  into the filter box to locate the Elasticsearch Operator.
+    
+    ![system schema](img/operatorhub.png)
+    
+2.  Click the  _ # Red Hat OpenShift Service Meshprovided by Red Hat_  to display information about the Operator.
+    
+3.  Click Install.
+    
+4.  Populate the entries of the  _Create Operator Subscription_  page as follows :
+    
+    1.  Select  _All namespaces_  on the cluster (default)
+        
+    2.  Select the  _stable Update Channel_
+        
+    3.  Select the Automatic Approval Strategy
+        
+    4.  Click Subscribe
+        
+    
+5.  The  _Subscription Overview_  page displays the Kiali Operator’s installation progress
+    
+6.  After about a minute, at the command line, view the new resource that represents the Jaeger Operator:
+    
 
 ### 1.2. Set Up Service Mesh Operator Maintra (optional)
 
@@ -675,7 +697,7 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5NzQ3OTAwMCwyNDQ0ODI2MzgsLTE4NT
+eyJoaXN0b3J5IjpbLTQyMzc1ODY5OSwyNDQ0ODI2MzgsLTE4NT
 MyNjYwNjcsMjA1MTg2NzM0NywtMTg2NjU0Nzc4MSwxOTYzMzkz
 ODY4LDMyMzc2NjUwLC0xNTcwNjM5MjUwLDExMjI2MzIwNDIsMT
 A5Mzk1ODAsLTE5MDIyMTIxNzgsLTEzNDY3MzM3MjQsLTE5MDc4
