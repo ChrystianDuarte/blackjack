@@ -1,8 +1,6 @@
 # blackjack and OpenBanking
 Black Jack Front End Demo for Open Banking at Scale Demo
 
-
-
 ## 1. Set Up Red Hat OpenShift Service Mesh on Cluster
 
 Installing the Service Mesh involves :
@@ -38,6 +36,69 @@ In this section of the lab, you will install these operator dependencies from th
     Log in using credentials of:  `admin / r3dh4t1!`
     
 2.  In the OCP Web Console, navigate to:  `Catalog -> Operator Hub`
+
+#### 1.1.2. Install Elasticsearch Operator
+
+1.  In the  _OperatorHub_  catalog of your OCP Web Console, type  **Elasticsearch**  into the filter box to locate the Elasticsearch Operator.
+    
+    ![images/operatorhub_es.png](https://cloud.scorm.com/content/courses/A9KI96X2QE/5bf72b4b0f94/3/02_Service_Mesh_Installation/images/operatorhub_es.png)
+    
+2.  Click the Elasticsearch Operator to display information about the Operator
+    
+3.  Click Install
+    
+4.  On the  _Create Operator Subscription_  page, specify the following:
+    
+    1.  Select  `All namespaces on the cluster (default)`.
+        
+        This installs the Operator in the default  _openshift-operators_  project and makes the Operator available to all projects in the cluster.
+        
+    2.  Select the preview Update Channel.
+        
+    3.  Select the Automatic Approval Strategy.
+        
+    4.  Click Subscribe
+        
+    
+5.  The  _Subscription Overview_  page displays the Elasticsearch Operator’s installation progress.
+    
+6.  After about a minute, at the command line, view the new resource that represents the Elasticsearch Operator:
+    
+    ```
+    $ oc get ClusterServiceVersion
+    
+    NAME                                         DISPLAY                  VERSION               REPLACES   PHASE
+    elasticsearch-operator.4.1.14-201908291507   Elasticsearch Operator   4.1.14-201908291507              Succeeded
+    ```
+    
+7.  After about a minute, view the status of the Elasticsearch operator pod in the  _openshift-operators_  namespace:
+    
+    ```
+    $ oc get pod  -n openshift-operators | grep "^elasticsearch"
+    
+    elasticsearch-operator-6c4fdc5975-pcx88   1/1     Running   0          1d2h
+    ```
+#### 1.1.3. Install Jaeger Operator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -157,5 +218,5 @@ ansible-playbook site.yml
 
 ##  2. OpenBanking Setup
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4Mjk2MzE4OSwtODUzNjg2NDUzXX0=
+eyJoaXN0b3J5IjpbMTI2NTExMjI3MiwtODUzNjg2NDUzXX0=
 -->
