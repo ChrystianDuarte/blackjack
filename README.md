@@ -196,7 +196,7 @@ Now that pre-req operators have been installed, the next step in installing the 
 4.  Verify that the operator launched successfully:
     ```
     oc logs -n istio-operator $(oc -n istio-operator get pods -l name=istio-operator --output=jsonpath={.items..metadata.name})
-    
+  
     Sample Output
     
      1: {"level":"info","ts":1560438471.4926245,"logger":"cmd","caller":"manager/main.go:38","msg":"Go Version: go1.11.6"}
@@ -216,7 +216,7 @@ Now that pre-req operators have been installed, the next step in installing the 
      15: {"level":"info","ts":1560438493.6806266,"logger":"kubebuilder.controller","caller":"controller/controller.go:153","msg":"Starting workers","Controller":"servicemeshcontrolplane-controller","WorkerCount":1}
      16: {"level":"info","ts":1560438493.6806233,"logger":"kubebuilder.controller","caller":"controller/controller.go:153","msg":"Starting workers","Controller":"servicemeshmemberroll-controller","WorkerCount":1}
      17: {"level":"info","ts":1560438493.6806598,"logger":"kubebuilder.controller","caller":"controller/controller.go:153","msg":"Starting workers","Controller":"controlplane-controller","WorkerCount":1}
-    
+
 
 ### 1.3. Deploy Control Plane
 
@@ -237,7 +237,7 @@ In this section of the lab, you define a  _ServiceMeshControlPlane_  and apply i
     ```
     
 2.  Create the custom resource file in your home directory:
-    
+    ```
     echo "apiVersion: maistra.io/v1
     kind: ServiceMeshControlPlane
     metadata:
@@ -516,6 +516,6 @@ ansible-playbook site.yml
 
 ##  2. OpenBanking Setup
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxNzgzMTk3MywyMTE4NjM5NTQ1LDEyNj
-UxMTIyNzIsLTg1MzY4NjQ1M119
+eyJoaXN0b3J5IjpbNzIzMTQ3NTE3LDIxMTg2Mzk1NDUsMTI2NT
+ExMjI3MiwtODUzNjg2NDUzXX0=
 -->
