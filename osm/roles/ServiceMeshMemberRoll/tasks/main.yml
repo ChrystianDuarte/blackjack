@@ -118,6 +118,7 @@
       shell: "date -Iseconds"
       register: dateseconds
 
+# BUG: this task response error when the pods not rollout 
     - name: "Add kubectl.kubernetes.io/restartedAt to istio-ingressgateway deployment"
       k8s:
         state: present
@@ -155,7 +156,8 @@
         namespace: "{{service_mesh_member_roll_namespaces}}"
         definition: "{{ lookup('template', '{{ role_path }}/templates/virtualservice.yml') }}"
       with_items: "{{ services.resources }}"
-
+      
+# Fix: Is necesary remove all routes and not for one application 
     - name: Remove existing Route for the product page service
       k8s:
         state: absent
@@ -163,6 +165,8 @@
         kind: Route
         namespace: "{{service_mesh_member_roll_namespaces}}"
         name: productpage
+        
+# Fix: Is necesary create all routes of the all applications
 
     - name: "Create new route to the product page"
       k8s:
