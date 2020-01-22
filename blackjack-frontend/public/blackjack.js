@@ -57,8 +57,11 @@ resetBoard, showBoard, showAlert, getWinner, jQuery, wager */
 			score = '';
 
 		var guid = 'santiago-8980';
-		var api_payment = 'http://blackjack-payment-blackjack.apps.'+guid+'.open.redhat.com/blackjack';
-		var api_users = 'http://blackjack-users-blackjack.apps.'+guid+'.open.redhat.com/blackjack';
+		//var api_payment = 'http://blackjack-payment-blackjack.apps.'+guid+'.open.redhat.com/blackjack';
+		//var api_users = 'http://blackjack-users-blackjack.apps.'+guid+'.open.redhat.com/blackjack';
+		var api_users = 'http://blackjack-users-blackjack.apps.cluster-'+guid+'.'+guid+'.example.opentlc.com/blackjack';
+		var api_payment = 'http://blackjack-payment-blackjack.apps.cluster-'+guid+'.'+guid+'.example.opentlc.com/blackjack';
+
 
 		this.account_info = {
 			email: 'not_set@redhat.com',
