@@ -459,9 +459,9 @@ $ oc new-app fuse7-java-openshift:1.4~https://github.com/ChrystianDuarte/blackja
 
 $ oc new-app fuse7-java-openshift:1.4~https://github.com/ChrystianDuarte/blackjack.git#master --context-dir=blackjack-users --name=blackjack-users
 
-$ oc new-app fuse7-java-openshift:1.4~[https://github.com/ChrystianDuarte/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-payment --name=blackjack-payment
+$ oc new-app fuse7-java-openshift:1.4~https://github.com/ChrystianDuarte/blackjack.git#master --context-dir=blackjack-payment --name=blackjack-payment
 
-$ oc new-app fuse7-java-openshift:1.4~[https://github.com/ChrystianDuarte/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-ranking --name=blackjack-ranking
+$ oc new-app fuse7-java-openshift:1.4~https://github.com/tgubeli/blackjack.git#master --context-dir=blackjack-ranking --name=blackjack-ranking
 ```
  
 Change port and targetPort from all services from 8778(8778) to 8080(8080)
@@ -672,10 +672,11 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzIzNzY2NTAsLTE1NzA2MzkyNTAsMTEyMj
-YzMjA0MiwxMDkzOTU4MCwtMTkwMjIxMjE3OCwtMTM0NjczMzcy
-NCwtMTkwNzg5NTk5NSwxMDAzODYyOTg1LC0zNDI2ODY1MDEsMT
-czODkwMDgyOSwyMDgwMjM5MDIxLC0xOTM1NDA4NzU1LDExNDA3
-OTM4NTcsMTc3Mzk5Mjc0OCw4NjM0OTcwNDEsLTgzMTc0OTIwNS
-wyMTE4NjM5NTQ1LDEyNjUxMTIyNzIsLTg1MzY4NjQ1M119
+eyJoaXN0b3J5IjpbNDcyNjA3ODkwLDMyMzc2NjUwLC0xNTcwNj
+M5MjUwLDExMjI2MzIwNDIsMTA5Mzk1ODAsLTE5MDIyMTIxNzgs
+LTEzNDY3MzM3MjQsLTE5MDc4OTU5OTUsMTAwMzg2Mjk4NSwtMz
+QyNjg2NTAxLDE3Mzg5MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQw
+ODc1NSwxMTQwNzkzODU3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC
+04MzE3NDkyMDUsMjExODYzOTU0NSwxMjY1MTEyMjcyLC04NTM2
+ODY0NTNdfQ==
 -->
