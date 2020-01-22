@@ -361,9 +361,8 @@ In this section of the lab, you define a  _ServiceMeshControlPlane_  and apply i
     oc get route kiali -n istio-system -o jsonpath='{"https://"}{.spec.host}{"\n"}'
     ```
     Sample Output
-   
-
-
+    
+    +
 https://kiali-istio-system.apps.cluster-<GUID>.<GUID>.<SANDBOX>.opentlc.com
 
 1.  Start a web browser on your computer and vist the Kiali URL.
@@ -375,25 +374,6 @@ https://kiali-istio-system.apps.cluster-<GUID>.<GUID>.<SANDBOX>.opentlc.com
     2.  Password: r3dh4t1!
         
         -   Expect to see the Kiali user interface, which you use later in this course.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -516,6 +496,6 @@ ansible-playbook site.yml
 
 ##  2. OpenBanking Setup
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyNjEzNjYzMCwyMTE4NjM5NTQ1LDEyNj
+eyJoaXN0b3J5IjpbLTgzMTc0OTIwNSwyMTE4NjM5NTQ1LDEyNj
 UxMTIyNzIsLTg1MzY4NjQ1M119
 -->
