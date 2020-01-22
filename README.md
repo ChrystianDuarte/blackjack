@@ -512,27 +512,30 @@ $ oc new-project obp-data
 ``
 ```
 $ oc new-app --template=postgresql-persistent --param=NAMESPACE=openshift --param=DATABASE_SERVICE_NAME=postgresql --param=POSTGRESQL_USER=obpuser --param=POSTGRESQL_PASSWORD=obppassword --param=POSTGRESQL_DATABASE=obpuser --param=POSTGRESQL_VERSION=9.6
-]
+```
   
-
 Deploy OBP API
-
+```
 $ oc new-project obp-api
-
+```
+```
 $ oc create -f obp-template-demojam
-
+```
+```
 $ oc process obp-api-example | oc create -f -
-
+```
   
 
 Restore data from Dump file
 
 1. Port forward the Portgres Pod:
 
+```
 $ oc project obp-data
-
+```
+```
 $ oc get pods
-
+```
 postgresql-1-pdsvc
 
 $ oc port-forward postgresql-1-pdsvc 5432:5432
@@ -664,8 +667,8 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODc2NTEyOTcyLDIwODAyMzkwMjEsLTE5Mz
-U0MDg3NTUsMTE0MDc5Mzg1NywxNzczOTkyNzQ4LDg2MzQ5NzA0
-MSwtODMxNzQ5MjA1LDIxMTg2Mzk1NDUsMTI2NTExMjI3MiwtOD
-UzNjg2NDUzXX0=
+eyJoaXN0b3J5IjpbLTIwMzc1NTI2NTcsMjA4MDIzOTAyMSwtMT
+kzNTQwODc1NSwxMTQwNzkzODU3LDE3NzM5OTI3NDgsODYzNDk3
+MDQxLC04MzE3NDkyMDUsMjExODYzOTU0NSwxMjY1MTEyMjcyLC
+04NTM2ODY0NTNdfQ==
 -->
