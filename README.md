@@ -497,14 +497,11 @@ ansible-playbook site.yml
 
 ##  2. OpenBanking Setup
 
-
-Clone git repo
-
-# git clone [https://github.com/tgubeli/blackjack.git](https://github.com/tgubeli/blackjack.git#master)  
-
-# cd blackjack/scripts/obp
-
-  
+Clone git repo 
+```
+$ git clone [https://github.com/ChrystianDuarte/blackjack.git](https://github.com/ChrystianDuarte/blackjack.git#master)  
+$ cd blackjack/scripts/obp
+```
 
 Deploy OBP Data Base
 ``
@@ -671,8 +668,8 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI3NjEyODUxLDE3Mzg5MDA4MjksMjA4MD
-IzOTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzODU3LDE3NzM5OTI3
-NDgsODYzNDk3MDQxLC04MzE3NDkyMDUsMjExODYzOTU0NSwxMj
-Y1MTEyMjcyLC04NTM2ODY0NTNdfQ==
+eyJoaXN0b3J5IjpbLTE4MzgyNzQzMzcsMTczODkwMDgyOSwyMD
+gwMjM5MDIxLC0xOTM1NDA4NzU1LDExNDA3OTM4NTcsMTc3Mzk5
+Mjc0OCw4NjM0OTcwNDEsLTgzMTc0OTIwNSwyMTE4NjM5NTQ1LD
+EyNjUxMTIyNzIsLTg1MzY4NjQ1M119
 -->
