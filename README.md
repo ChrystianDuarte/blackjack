@@ -1,10 +1,7 @@
 # blackjack and OpenBanking
 Black Jack Front End Demo for Open Banking at Scale Demo
 
-
-
-
-## Enable Service Mesh
+## 1. Enable Service Mesh
 
 ## Download sources
 
@@ -119,6 +116,8 @@ To execute the playbook use the following command
 ```bash
 ansible-playbook site.yml
 ```
+
+##  2. OpenBanking Setup
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODc3MzU1MDFdfQ==
+eyJoaXN0b3J5IjpbLTk2NzQ5NjI4MV19
 -->
