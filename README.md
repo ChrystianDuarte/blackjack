@@ -552,7 +552,7 @@ Top Ten users: [http://blackjack-frontend-blackjack.apps.cluster-<"GUID">.<"GUID
 ### Go to osm
 
 ```bash
-cd osm
+$ cd osm
 ```
 
 ### Pre Req
@@ -576,9 +576,9 @@ In order to test Openshift Service Mesh we are going to use the bookinfo app fro
 To deploy the application follow the following instructions:
 
 ```bash
-oc new-project bookinfo
+$ oc new-project bookinfo
 
-oc apply -f https://raw.githubusercontent.com/istio/istio/1.4.0/samples/bookinfo/platform/kube/bookinfo.yaml -n bookinfo
+$ oc apply -f https://raw.githubusercontent.com/istio/istio/1.4.0/samples/bookinfo/platform/kube/bookinfo.yaml -n bookinfo
 
 $ oc expose service productpage
 ```
@@ -712,11 +712,11 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5NDU4NDc4MiwxMzI1NTQ0ODE1LDI0ND
-Q4MjYzOCwtMTg1MzI2NjA2NywyMDUxODY3MzQ3LC0xODY2NTQ3
-NzgxLDE5NjMzOTM4NjgsMzIzNzY2NTAsLTE1NzA2MzkyNTAsMT
-EyMjYzMjA0MiwxMDkzOTU4MCwtMTkwMjIxMjE3OCwtMTM0Njcz
-MzcyNCwtMTkwNzg5NTk5NSwxMDAzODYyOTg1LC0zNDI2ODY1MD
-EsMTczODkwMDgyOSwyMDgwMjM5MDIxLC0xOTM1NDA4NzU1LDEx
-NDA3OTM4NTddfQ==
+eyJoaXN0b3J5IjpbLTE5NjUyMDUyMzgsMTMyNTU0NDgxNSwyND
+Q0ODI2MzgsLTE4NTMyNjYwNjcsMjA1MTg2NzM0NywtMTg2NjU0
+Nzc4MSwxOTYzMzkzODY4LDMyMzc2NjUwLC0xNTcwNjM5MjUwLD
+ExMjI2MzIwNDIsMTA5Mzk1ODAsLTE5MDIyMTIxNzgsLTEzNDY3
+MzM3MjQsLTE5MDc4OTU5OTUsMTAwMzg2Mjk4NSwtMzQyNjg2NT
+AxLDE3Mzg5MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwx
+MTQwNzkzODU3XX0=
 -->
