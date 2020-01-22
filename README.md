@@ -196,9 +196,18 @@ In this section of the lab, you will install these operator dependencies from th
 5.  The  _Subscription Overview_  page displays the OpenShift Service Mesh Operator’s installation progress
     
 6.  After about a minute, at the command line, view the new resource that represents the OpenShift Service Mesh:
-    ```
- $ oc get ClusterServiceVersion |
-       ``` 
+
+``
+ $ oc get ClusterServiceVersion
+       ``
+``
+NAME                                         DISPLAY                          VERSION               REPLACES                     PHASE
+elasticsearch-operator.4.2.15-202001171551   Elasticsearch Operator           4.2.15-202001171551                                Succeeded
+jaeger-operator.v1.13.1                      Jaeger Operator                  1.13.1                                             Succeeded
+kiali-operator.v1.0.9                        Kiali Operator                   1.0.9                 kiali-operator.v1.0.8        Succeeded
+servicemeshoperator.v1.0.4                   Red Hat OpenShift Service Mesh   1.0.4                 servicemeshoperator.v1.0.3   Succeeded
+``
+ 
 
 ### 1.2. Set Up Service Mesh Operator Maintra (optional)
 
@@ -699,11 +708,11 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3Nzc0Njc2OTksMjQ0NDgyNjM4LC0xOD
-UzMjY2MDY3LDIwNTE4NjczNDcsLTE4NjY1NDc3ODEsMTk2MzM5
-Mzg2OCwzMjM3NjY1MCwtMTU3MDYzOTI1MCwxMTIyNjMyMDQyLD
-EwOTM5NTgwLC0xOTAyMjEyMTc4LC0xMzQ2NzMzNzI0LC0xOTA3
-ODk1OTk1LDEwMDM4NjI5ODUsLTM0MjY4NjUwMSwxNzM4OTAwOD
-I5LDIwODAyMzkwMjEsLTE5MzU0MDg3NTUsMTE0MDc5Mzg1Nywx
-NzczOTkyNzQ4XX0=
+eyJoaXN0b3J5IjpbLTg1MjY0MjQ1NywyNDQ0ODI2MzgsLTE4NT
+MyNjYwNjcsMjA1MTg2NzM0NywtMTg2NjU0Nzc4MSwxOTYzMzkz
+ODY4LDMyMzc2NjUwLC0xNTcwNjM5MjUwLDExMjI2MzIwNDIsMT
+A5Mzk1ODAsLTE5MDIyMTIxNzgsLTEzNDY3MzM3MjQsLTE5MDc4
+OTU5OTUsMTAwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5MDA4Mj
+ksMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzODU3LDE3
+NzM5OTI3NDhdfQ==
 -->
