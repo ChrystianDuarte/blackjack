@@ -173,7 +173,7 @@ In this section of the lab, you will install these operator dependencies from th
     ```
     
 
-### 1.2. Set Up Service Mesh Operator
+### 1.2. Set Up Service Mesh Operator (change)
 
 Now that pre-req operators have been installed, the next step in installing the service mesh is to install the service mesh operator.
 
@@ -673,9 +673,9 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyNTIzNDU4MywtMTkwNzg5NTk5NSwxMD
-AzODYyOTg1LC0zNDI2ODY1MDEsMTczODkwMDgyOSwyMDgwMjM5
-MDIxLC0xOTM1NDA4NzU1LDExNDA3OTM4NTcsMTc3Mzk5Mjc0OC
-w4NjM0OTcwNDEsLTgzMTc0OTIwNSwyMTE4NjM5NTQ1LDEyNjUx
-MTIyNzIsLTg1MzY4NjQ1M119
+eyJoaXN0b3J5IjpbLTEzNDY3MzM3MjQsLTE5MDc4OTU5OTUsMT
+AwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5MDA4MjksMjA4MDIz
+OTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzODU3LDE3NzM5OTI3ND
+gsODYzNDk3MDQxLC04MzE3NDkyMDUsMjExODYzOTU0NSwxMjY1
+MTEyMjcyLC04NTM2ODY0NTNdfQ==
 -->
