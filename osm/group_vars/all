@@ -1,12 +1,12 @@
 # API URL of Openshift 4 Instance
-openshift_api_url: "https://api.cluster-58fe.58fe.sandbox302.opentlc.com:6443"
+openshift_api_url: "https://api.cluster-santiago-8980.santiago-8980.example.opentlc.com:6443"
 # Application domain
-openshift_apps_domain: "apps.cluster-58fe.58fe.sandbox302.opentlc.com"
+openshift_apps_domain: "apps.cluster-santiago-8980.santiago-8980.example.opentlc.com"
 # Openshift User
-openshift_username: admin
+openshift_username: opentlc-mgr
 # Openshift Password
 openshift_password: "r3dh4t1!"
 # Project used to deploy Service Mesh Control Plane
-control_plane_project_name: "bookretail-istio-system"
+control_plane_project_name: "istio-system"
 # Namespace that will be included into Service Mesh Scope
-service_mesh_member_roll_namespaces: " bookinfo"
+service_mesh_member_roll_namespaces: " blackjack"
