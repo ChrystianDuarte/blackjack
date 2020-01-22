@@ -120,6 +120,9 @@ Openshift Container Platform 4.2 with Openshift Service Mesh installed -> follow
 Install Python dependencies
 
 ```bash
+#Update ansible
+pip install ansible==2.9.2
+# install package
 pip install requests-oauthlib --user
 pip install openshift --user
 ```
@@ -218,5 +221,6 @@ ansible-playbook site.yml
 
 ##  2. OpenBanking Setup
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI2NTExMjI3MiwtODUzNjg2NDUzXX0=
+eyJoaXN0b3J5IjpbMjExODYzOTU0NSwxMjY1MTEyMjcyLC04NT
+M2ODY0NTNdfQ==
 -->
