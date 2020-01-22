@@ -47,6 +47,9 @@ In this section of the lab, you will install these operator dependencies from th
 ```
 ![img/operatorhub_es.png]
 
+![system schema](img/operatorhub_es.png)
+
+
     
 2.  Click the Elasticsearch Operator to display information about the Operator
     
@@ -501,6 +504,7 @@ ansible-playbook site.yml
 
 ##  2. OpenBanking Setup
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODYzNDk3MDQxLC04MzE3NDkyMDUsMjExOD
-YzOTU0NSwxMjY1MTEyMjcyLC04NTM2ODY0NTNdfQ==
+eyJoaXN0b3J5IjpbLTY3Njk0MjUzNiw4NjM0OTcwNDEsLTgzMT
+c0OTIwNSwyMTE4NjM5NTQ1LDEyNjUxMTIyNzIsLTg1MzY4NjQ1
+M119
 -->
