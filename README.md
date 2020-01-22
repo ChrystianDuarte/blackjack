@@ -1,6 +1,11 @@
 # Blackjack and OpenBanking
 Black Jack Front End Demo for Open Banking at Scale Demo
 
+Credits: 
+Colaborartor: Tomas Gubelli, Francisco Meneses, Paulo Seguel, Chrystian Duarte
+Event: Tech Excahnge 2019
+Openbank at Scale Team
+
 ## 1. Set Up Red Hat OpenShift Service Mesh on Cluster
 
 Installing the Service Mesh involves :
@@ -663,8 +668,8 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0MjY4NjUwMSwxNzM4OTAwODI5LDIwOD
-AyMzkwMjEsLTE5MzU0MDg3NTUsMTE0MDc5Mzg1NywxNzczOTky
-NzQ4LDg2MzQ5NzA0MSwtODMxNzQ5MjA1LDIxMTg2Mzk1NDUsMT
-I2NTExMjI3MiwtODUzNjg2NDUzXX0=
+eyJoaXN0b3J5IjpbMjQ2Mjg0ODMwLC0zNDI2ODY1MDEsMTczOD
+kwMDgyOSwyMDgwMjM5MDIxLC0xOTM1NDA4NzU1LDExNDA3OTM4
+NTcsMTc3Mzk5Mjc0OCw4NjM0OTcwNDEsLTgzMTc0OTIwNSwyMT
+E4NjM5NTQ1LDEyNjUxMTIyNzIsLTg1MzY4NjQ1M119
 -->
