@@ -400,6 +400,7 @@ $ cd blackjack/scripts/obp
 ```
 
 Deploy OBP Data Base
+
 ``
 $ oc new-project obp-data
 ``
@@ -671,10 +672,10 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5Mzk1ODAsLTE5MDIyMTIxNzgsLTEzND
-Y3MzM3MjQsLTE5MDc4OTU5OTUsMTAwMzg2Mjk4NSwtMzQyNjg2
-NTAxLDE3Mzg5MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQwODc1NS
-wxMTQwNzkzODU3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC04MzE3
-NDkyMDUsMjExODYzOTU0NSwxMjY1MTEyMjcyLC04NTM2ODY0NT
-NdfQ==
+eyJoaXN0b3J5IjpbMTEyMjYzMjA0MiwxMDkzOTU4MCwtMTkwMj
+IxMjE3OCwtMTM0NjczMzcyNCwtMTkwNzg5NTk5NSwxMDAzODYy
+OTg1LC0zNDI2ODY1MDEsMTczODkwMDgyOSwyMDgwMjM5MDIxLC
+0xOTM1NDA4NzU1LDExNDA3OTM4NTcsMTc3Mzk5Mjc0OCw4NjM0
+OTcwNDEsLTgzMTc0OTIwNSwyMTE4NjM5NTQ1LDEyNjUxMTIyNz
+IsLTg1MzY4NjQ1M119
 -->
