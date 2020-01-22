@@ -558,8 +558,10 @@ More info: [https://www.youtube.com/watch?v=S5Zx8Lf9-Aw](https://www.youtube.com
 
 Deploy Blackjack APIs
 
+```
 $ oc new-project blackjack
-
+```
+```
 $ oc apply -f [https://raw.githubusercontent.com/jboss-fuse/application-templates/2.1.x.redhat-7-4-x/fis-image-streams.json](https://raw.githubusercontent.com/jboss-fuse/application-templates/2.1.x.redhat-7-4-x/fis-image-streams.json) -n openshift
 
   
@@ -571,15 +573,13 @@ $ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#
 $ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-payment --name=blackjack-payment
 
 $ oc new-app fuse7-java-openshift:1.4~[https://github.com/tgubeli/blackjack.git#master](https://github.com/tgubeli/blackjack.git#master) --context-dir=blackjack-ranking --name=blackjack-ranking
-
-  
-
+```
+ 
 Change port and targetPort from all services from 8778(8778) to 8080(8080)
 
 (Do it manually)
 
-  
-
+```
 Expose services
 
 # oc expose svc/blackjack-users
@@ -589,12 +589,13 @@ Expose services
 # oc expose svc/blackjack-ranking
 
 # oc expose svc/blackjack-status
-
+```
   
 
 Deploy Blackjack Frontend
 
-Fork [https://github.com/tgubeli/blackjack.git](https://github.com/tgubeli/blackjack.git) (you will need an GitHub account)
+
+Fork [https://github.com/ChrystianDuarte/blackjack.git](https://github.com/tgubeli/blackjack.git) (you will need an GitHub account)
 
 Edit blackjack.js and dashboard.js (.../edit/master/public/blackjack.js and .../edit/master/public/dashboard.js)
 
@@ -667,8 +668,8 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczODkwMDgyOSwyMDgwMjM5MDIxLC0xOT
-M1NDA4NzU1LDExNDA3OTM4NTcsMTc3Mzk5Mjc0OCw4NjM0OTcw
-NDEsLTgzMTc0OTIwNSwyMTE4NjM5NTQ1LDEyNjUxMTIyNzIsLT
-g1MzY4NjQ1M119
+eyJoaXN0b3J5IjpbLTg4ODQwOTc4OSwxNzM4OTAwODI5LDIwOD
+AyMzkwMjEsLTE5MzU0MDg3NTUsMTE0MDc5Mzg1NywxNzczOTky
+NzQ4LDg2MzQ5NzA0MSwtODMxNzQ5MjA1LDIxMTg2Mzk1NDUsMT
+I2NTExMjI3MiwtODUzNjg2NDUzXX0=
 -->
