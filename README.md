@@ -615,7 +615,6 @@ Example: oc new-app nodejs:10~[https://github.com/tgubeli/blackjack.git#master](
 ```
 $ oc expose svc/blackjack-frontend
 ```
-  
 
 Enjoy!
 
@@ -674,9 +673,9 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDc4OTU5OTUsMTAwMzg2Mjk4NSwtMz
-QyNjg2NTAxLDE3Mzg5MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQw
-ODc1NSwxMTQwNzkzODU3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC
-04MzE3NDkyMDUsMjExODYzOTU0NSwxMjY1MTEyMjcyLC04NTM2
-ODY0NTNdfQ==
+eyJoaXN0b3J5IjpbMTEyNTIzNDU4MywtMTkwNzg5NTk5NSwxMD
+AzODYyOTg1LC0zNDI2ODY1MDEsMTczODkwMDgyOSwyMDgwMjM5
+MDIxLC0xOTM1NDA4NzU1LDExNDA3OTM4NTcsMTc3Mzk5Mjc0OC
+w4NjM0OTcwNDEsLTgzMTc0OTIwNSwyMTE4NjM5NTQ1LDEyNjUx
+MTIyNzIsLTg1MzY4NjQ1M119
 -->
