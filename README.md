@@ -506,9 +506,9 @@ Enjoy!
 
 Go to your browser:
 
-Game: [http://blackjack-frontend-blackjack.apps.cluster-<"GUID">.<""GUID"">.example.opentlc.com/blackjack.html](http://blackjack-frontend-blackjack.apps.cluster-santiago-8980.santiago-8980.example.opentlc.com) (enter a redhat email)
+Game: [http://blackjack-frontend-blackjack.apps.cluster-<"GUID">.<"GUID">.example.opentlc.com/blackjack.html](http://blackjack-frontend-blackjack.apps.cluster-santiago-8980.santiago-8980.example.opentlc.com) (enter a redhat email)
 
-Top Ten users: http://blackjack-frontend-blackjack.apps.cluster-<"GUID">.<""GUID"">.example.opentlc.com/dashboard.html
+Top Ten users: http://blackjack-frontend-blackjack.apps.cluster-<"GUID">.<"GUID">.example.opentlc.com/dashboard.html
 
 
 ## Apply Service Mesh configurations
@@ -672,11 +672,11 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTMyNjYwNjcsMjA1MTg2NzM0NywtMT
-g2NjU0Nzc4MSwxOTYzMzkzODY4LDMyMzc2NjUwLC0xNTcwNjM5
-MjUwLDExMjI2MzIwNDIsMTA5Mzk1ODAsLTE5MDIyMTIxNzgsLT
-EzNDY3MzM3MjQsLTE5MDc4OTU5OTUsMTAwMzg2Mjk4NSwtMzQy
-Njg2NTAxLDE3Mzg5MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQwOD
-c1NSwxMTQwNzkzODU3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC04
-MzE3NDkyMDVdfQ==
+eyJoaXN0b3J5IjpbLTE1NzM4MTQwMTEsLTE4NTMyNjYwNjcsMj
+A1MTg2NzM0NywtMTg2NjU0Nzc4MSwxOTYzMzkzODY4LDMyMzc2
+NjUwLC0xNTcwNjM5MjUwLDExMjI2MzIwNDIsMTA5Mzk1ODAsLT
+E5MDIyMTIxNzgsLTEzNDY3MzM3MjQsLTE5MDc4OTU5OTUsMTAw
+Mzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5MDA4MjksMjA4MDIzOT
+AyMSwtMTkzNTQwODc1NSwxMTQwNzkzODU3LDE3NzM5OTI3NDgs
+ODYzNDk3MDQxXX0=
 -->
