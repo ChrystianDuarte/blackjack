@@ -323,9 +323,9 @@ In this section of the lab, you define a  _ServiceMeshControlPlane_  and apply i
     servicemeshcontrolplane.maistra.io/service-mesh-installation created
     
 5.  Watch the progress of the deployment:
-    
+    ```
     watch oc get pods -n istio-system
-    
+    ```
     -   It takes a minute or two before pods start appearing, and you may see some pods temporarily in  `Error`  and  `CrashLoopBackoff`  states that resolve themselves within a few seconds.
         
         NOTE
@@ -334,7 +334,7 @@ In this section of the lab, you define a  _ServiceMeshControlPlane_  and apply i
         
     
 6.  Once the operator completes the installation successfully, confirm that you see the following pods all running successfully:
-    
+    ```
      1: NAME                                      READY   STATUS    RESTARTS   AGE
      2: grafana-86dc5978b8-m7wqf                  1/1     Running   0          80s
      3: istio-citadel-6656fc5b9b-dc8dr            1/1     Running   0          6m38s
@@ -352,6 +352,7 @@ In this section of the lab, you define a  _ServiceMeshControlPlane_  and apply i
 7.  Press  **Ctrl+C**  to exit the  _watch_.
     
 8.  Examine the created routes in the  `istio-system`  project:
+    
     ```
     oc get routes -n istio-system
     ```
@@ -673,9 +674,9 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDY3MzM3MjQsLTE5MDc4OTU5OTUsMT
-AwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5MDA4MjksMjA4MDIz
-OTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzODU3LDE3NzM5OTI3ND
-gsODYzNDk3MDQxLC04MzE3NDkyMDUsMjExODYzOTU0NSwxMjY1
-MTEyMjcyLC04NTM2ODY0NTNdfQ==
+eyJoaXN0b3J5IjpbLTE5MDIyMTIxNzgsLTEzNDY3MzM3MjQsLT
+E5MDc4OTU5OTUsMTAwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5
+MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzOD
+U3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC04MzE3NDkyMDUsMjEx
+ODYzOTU0NSwxMjY1MTEyMjcyLC04NTM2ODY0NTNdfQ==
 -->
