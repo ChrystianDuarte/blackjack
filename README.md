@@ -1,4 +1,4 @@
-# blackjack and OpenBanking
+# Blackjack and OpenBanking
 Black Jack Front End Demo for Open Banking at Scale Demo
 
 ## 1. Set Up Red Hat OpenShift Service Mesh on Cluster
@@ -497,7 +497,8 @@ ansible-playbook site.yml
 
 ##  2. OpenBanking Setup
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzU0MDg3NTUsMTE0MDc5Mzg1NywxNz
-czOTkyNzQ4LDg2MzQ5NzA0MSwtODMxNzQ5MjA1LDIxMTg2Mzk1
-NDUsMTI2NTExMjI3MiwtODUzNjg2NDUzXX0=
+eyJoaXN0b3J5IjpbMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwxMT
+QwNzkzODU3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC04MzE3NDky
+MDUsMjExODYzOTU0NSwxMjY1MTEyMjcyLC04NTM2ODY0NTNdfQ
+==
 -->
