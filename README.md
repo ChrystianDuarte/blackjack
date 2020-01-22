@@ -303,11 +303,11 @@ In this section of the lab, you define a  _ServiceMeshControlPlane_  and apply i
         
     
 4.  Now create the service mesh  _control plane_  in the  `istio-system`  project:
-    
+    ```
     oc apply -f $HOME/service-mesh.yaml -n istio-system
-    
+    ```
     Sample Output
-    
+    ```
     servicemeshcontrolplane.maistra.io/service-mesh-installation created
     
 5.  Watch the progress of the deployment:
@@ -340,29 +340,29 @@ In this section of the lab, you define a  _ServiceMeshControlPlane_  and apply i
 7.  Press  **Ctrl+C**  to exit the  _watch_.
     
 8.  Examine the created routes in the  `istio-system`  project:
-    
+    ```
     oc get routes -n istio-system
+    ```
     
     Sample Output
-    
+    ```
      1: NAME                   HOST/PORT                                                                         PATH   SERVICES               PORT    TERMINATION   WILDCARD
      2: grafana                grafana-istio-system.apps.cluster-<GUID>>.<GUID>>.<SANDBOX>.opentlc.com                  grafana                <all>                 None
      3: istio-ingressgateway   istio-ingressgateway-istio-system.apps.cluster-<GUID>>.<GUID>>.<SANDBOX>.opentlc.com     istio-ingressgateway   80                    None
      4: jaeger                 jaeger-query-istio-system.apps.cluster-<GUID>>.<GUID>>.<SANDBOX>.opentlc.com             jaeger-query           <all>   edge          None
      5: kiali                  kiali-istio-system.apps.cluster-<GUID>>.<GUID>>.<SANDBOX>.opentlc.com                    kiali                  20001   reencrypt     None
      6: prometheus             prometheus-istio-system.apps.cluster-<GUID>>.<GUID>>.<SANDBOX>.opentlc.com               prometheus             <all>                 None
-    
+    ```
     -   Expect to see routes for  `grafana`,  `prometheus`, and  `kiali`  among others.
         
     
 9.  Enter this command to get the URL of the Kiali web console
-    
+    ```
     oc get route kiali -n istio-system -o jsonpath='{"https://"}{.spec.host}{"\n"}'
-    
+    ```
     Sample Output
-    
-    +
-    
+   
+
 
 https://kiali-istio-system.apps.cluster-<GUID>.<GUID>.<SANDBOX>.opentlc.com
 
@@ -516,6 +516,6 @@ ansible-playbook site.yml
 
 ##  2. OpenBanking Setup
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzIzMTQ3NTE3LDIxMTg2Mzk1NDUsMTI2NT
-ExMjI3MiwtODUzNjg2NDUzXX0=
+eyJoaXN0b3J5IjpbLTUyNjEzNjYzMCwyMTE4NjM5NTQ1LDEyNj
+UxMTIyNzIsLTg1MzY4NjQ1M119
 -->
