@@ -514,13 +514,13 @@ Top Ten users: [http://blackjack-frontend-blackjack.apps.cluster-<"GUID">.<"GUID
 ## Apply Service Mesh configurations
 
 
-# Go to homework-rhoar
+### Go to osm
 
 ```bash
 cd osm
 ```
 
-## Pre Req
+### Pre Req
 
 (oc - OpenShift Command Line Interface)[https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/]
 (ansible 2.9) [https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html]
@@ -535,7 +535,7 @@ pip install requests-oauthlib --user
 pip install openshift --user
 ```
 
-## Demo Application
+### Demo Application
 
 In order to test Openshift Service Mesh we are going to use the bookinfo app from the istio repository.
 To deploy the application follow the following instructions:
@@ -548,7 +548,7 @@ oc apply -f https://raw.githubusercontent.com/istio/istio/1.4.0/samples/bookinfo
 oc expose service productpage
 ```
 
-## Apply Service Mesh for Namespace Blackjack
+### Apply Service Mesh for Namespace Blackjack
 
 The goal of the homework is to enable service mesh capabilities on the bookinfo namespace.
 The features that need to be enable are:
@@ -598,7 +598,7 @@ In order to acomplish previus requirements and this homework principal goal, I h
 * site.yml: Main playbook file
 
 
-## Variables setup
+### Variables setup
 
 "All" file contains all the variables used by the playbook
 
@@ -617,7 +617,7 @@ control_plane_project_name: "istio-system"
 service_mesh_member_roll_namespaces: " bookinfo"
 ```
 
-## Playbook execution
+### Playbook execution
 
 To execute the playbook use the following command
 
@@ -672,11 +672,11 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxMDI5OTg4OSwtMTg1MzI2NjA2NywyMD
-UxODY3MzQ3LC0xODY2NTQ3NzgxLDE5NjMzOTM4NjgsMzIzNzY2
-NTAsLTE1NzA2MzkyNTAsMTEyMjYzMjA0MiwxMDkzOTU4MCwtMT
-kwMjIxMjE3OCwtMTM0NjczMzcyNCwtMTkwNzg5NTk5NSwxMDAz
-ODYyOTg1LC0zNDI2ODY1MDEsMTczODkwMDgyOSwyMDgwMjM5MD
-IxLC0xOTM1NDA4NzU1LDExNDA3OTM4NTcsMTc3Mzk5Mjc0OCw4
-NjM0OTcwNDFdfQ==
+eyJoaXN0b3J5IjpbMjQ0NDgyNjM4LC0xODUzMjY2MDY3LDIwNT
+E4NjczNDcsLTE4NjY1NDc3ODEsMTk2MzM5Mzg2OCwzMjM3NjY1
+MCwtMTU3MDYzOTI1MCwxMTIyNjMyMDQyLDEwOTM5NTgwLC0xOT
+AyMjEyMTc4LC0xMzQ2NzMzNzI0LC0xOTA3ODk1OTk1LDEwMDM4
+NjI5ODUsLTM0MjY4NjUwMSwxNzM4OTAwODI5LDIwODAyMzkwMj
+EsLTE5MzU0MDg3NTUsMTE0MDc5Mzg1NywxNzczOTkyNzQ4LDg2
+MzQ5NzA0MV19
 -->
