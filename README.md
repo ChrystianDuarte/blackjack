@@ -580,7 +580,7 @@ oc new-project bookinfo
 
 oc apply -f https://raw.githubusercontent.com/istio/istio/1.4.0/samples/bookinfo/platform/kube/bookinfo.yaml -n bookinfo
 
-oc expose service productpage
+$ oc expose service productpage
 ```
 
 ### Apply Service Mesh for Namespace Blackjack
@@ -651,13 +651,18 @@ control_plane_project_name: "istio-system"
 # Namespace that will be included into Service Mesh Scope
 service_mesh_member_roll_namespaces: " bookinfo"
 ```
+### Create files directory
 
+Create a directory in 
+```bash
+$ mkdir files /osm/roles/ServiceMeshMemberRoll/
+```
 ### Playbook execution
 
 To execute the playbook use the following command
 
 ```bash
-ansible-playbook site.yml
+$ ansible-playbook site.yml
 ```
 
 ## Optional: Enable Autoscalling
@@ -707,11 +712,11 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyNTU0NDgxNSwyNDQ0ODI2MzgsLTE4NT
-MyNjYwNjcsMjA1MTg2NzM0NywtMTg2NjU0Nzc4MSwxOTYzMzkz
-ODY4LDMyMzc2NjUwLC0xNTcwNjM5MjUwLDExMjI2MzIwNDIsMT
-A5Mzk1ODAsLTE5MDIyMTIxNzgsLTEzNDY3MzM3MjQsLTE5MDc4
-OTU5OTUsMTAwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5MDA4Mj
-ksMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzODU3LDE3
-NzM5OTI3NDhdfQ==
+eyJoaXN0b3J5IjpbMTk5NDU4NDc4MiwxMzI1NTQ0ODE1LDI0ND
+Q4MjYzOCwtMTg1MzI2NjA2NywyMDUxODY3MzQ3LC0xODY2NTQ3
+NzgxLDE5NjMzOTM4NjgsMzIzNzY2NTAsLTE1NzA2MzkyNTAsMT
+EyMjYzMjA0MiwxMDkzOTU4MCwtMTkwMjIxMjE3OCwtMTM0Njcz
+MzcyNCwtMTkwNzg5NTk5NSwxMDAzODYyOTg1LC0zNDI2ODY1MD
+EsMTczODkwMDgyOSwyMDgwMjM5MDIxLC0xOTM1NDA4NzU1LDEx
+NDA3OTM4NTddfQ==
 -->
