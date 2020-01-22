@@ -401,9 +401,9 @@ $ cd blackjack/scripts/obp
 
 Deploy OBP Data Base
 
-``
+```
 $ oc new-project obp-data
-``
+```
 ```
 $ oc new-app --template=postgresql-persistent --param=NAMESPACE=openshift --param=DATABASE_SERVICE_NAME=postgresql --param=POSTGRESQL_USER=obpuser --param=POSTGRESQL_PASSWORD=obppassword --param=POSTGRESQL_DATABASE=obpuser --param=POSTGRESQL_VERSION=9.6
 ```
@@ -672,10 +672,10 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyMjYzMjA0MiwxMDkzOTU4MCwtMTkwMj
-IxMjE3OCwtMTM0NjczMzcyNCwtMTkwNzg5NTk5NSwxMDAzODYy
-OTg1LC0zNDI2ODY1MDEsMTczODkwMDgyOSwyMDgwMjM5MDIxLC
-0xOTM1NDA4NzU1LDExNDA3OTM4NTcsMTc3Mzk5Mjc0OCw4NjM0
-OTcwNDEsLTgzMTc0OTIwNSwyMTE4NjM5NTQ1LDEyNjUxMTIyNz
-IsLTg1MzY4NjQ1M119
+eyJoaXN0b3J5IjpbLTE1NzA2MzkyNTAsMTEyMjYzMjA0MiwxMD
+kzOTU4MCwtMTkwMjIxMjE3OCwtMTM0NjczMzcyNCwtMTkwNzg5
+NTk5NSwxMDAzODYyOTg1LC0zNDI2ODY1MDEsMTczODkwMDgyOS
+wyMDgwMjM5MDIxLC0xOTM1NDA4NzU1LDExNDA3OTM4NTcsMTc3
+Mzk5Mjc0OCw4NjM0OTcwNDEsLTgzMTc0OTIwNSwyMTE4NjM5NT
+Q1LDEyNjUxMTIyNzIsLTg1MzY4NjQ1M119
 -->
