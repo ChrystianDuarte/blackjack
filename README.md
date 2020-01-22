@@ -3,7 +3,43 @@ Black Jack Front End Demo for Open Banking at Scale Demo
 
 
 
-## 1. Enable Service Mesh
+## 1. Set Up Red Hat OpenShift Service Mesh on Cluster
+
+Installing the Service Mesh involves :
+
+1.  Installing Elasticsearch, Jaeger, Kiali
+
+2.  Installing the Service Mesh Operator
+    
+3.  Creating and managing a  _ServiceMeshControlPlane_  resource to deploy the Service Mesh control plane
+    
+4.  Creating a  _ServiceMeshMemberRoll_  resource to specify the namespaces associated with the Service Mesh.
+   
+NOTE
+
+The latest supported product installation instructions are located  [here](https://docs.openshift.com/container-platform/4.1/service_mesh/service_mesh_install/installing-ossm.html).
+
+### 1.1. Install Service Mesh Operator Dependencies
+
+The Red Hat OpenShift Service Mesh Operator has dependencies  _Elasticsearch_,  _Jaeger_  and  _Kiali_  operators.
+
+In this section of the lab, you will install these operator dependencies from the  _Catalog_  of your OCP web console (which pulls operators from:  [OperatorHub](https://operatorhub.io/)).
+
+#### 1.1.1. OCP Web Console  _Catalog_
+
+1.  From the previous lab, you should already have a tab in your browser opened to the OCP Web Console.
+    
+    If you do not still have the OCP Web Console open, its URL can be identified by executing the following in the remote  _bastion_  node of your lab environment:
+    
+    ```
+    $ echo -en "\n\nhttps://`oc get route console -o template --template {{.spec.host}} -n openshift-console`\n"
+    ```
+    
+    Log in using credentials of:  `admin / r3dh4t1!`
+    
+2.  In the OCP Web Console, navigate to:  `Catalog -> Operator Hub`
+
+
 
 ## Download sources
 
@@ -121,5 +157,5 @@ ansible-playbook site.yml
 
 ##  2. OpenBanking Setup
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1MzY4NjQ1M119
+eyJoaXN0b3J5IjpbMTU4Mjk2MzE4OSwtODUzNjg2NDUzXX0=
 -->
