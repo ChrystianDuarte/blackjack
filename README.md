@@ -83,7 +83,7 @@ In this section of the lab, you will install these operator dependencies from th
 
 1.  In the  _OperatorHub_  catalog of your OCP Web Console, type  **Jaeger**  into the filter box to locate the Elasticsearch Operator.
     
-    ![images/operatorhub_jaeger.png](https://cloud.scorm.com/content/courses/A9KI96X2QE/5bf72b4b0f94/3/02_Service_Mesh_Installation/images/operatorhub_jaeger.png)
+    ![system schema](img/operatorhub_jaeger.png)
     
 2.  Click the  _Jaeger Operator provided by Red Hat_  to display information about the Operator.
     
@@ -497,7 +497,7 @@ ansible-playbook site.yml
 
 ##  2. OpenBanking Setup
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0MDc5Mzg1NywxNzczOTkyNzQ4LDg2Mz
-Q5NzA0MSwtODMxNzQ5MjA1LDIxMTg2Mzk1NDUsMTI2NTExMjI3
-MiwtODUzNjg2NDUzXX0=
+eyJoaXN0b3J5IjpbMTA1ODY0Mjk4MSwxMTQwNzkzODU3LDE3Nz
+M5OTI3NDgsODYzNDk3MDQxLC04MzE3NDkyMDUsMjExODYzOTU0
+NSwxMjY1MTEyMjcyLC04NTM2ODY0NTNdfQ==
 -->
