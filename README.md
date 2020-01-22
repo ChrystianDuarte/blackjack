@@ -172,8 +172,43 @@ In this section of the lab, you will install these operator dependencies from th
     kiali-operator-64c8487b6f-pp4k9   1/1     Running   0          1d2h
     ```
     
+### 1.2. Set Up Service Mesh Operator Red Hat (Recomended)
 
-### 1.2. Set Up Service Mesh Operator (change)
+1.  In the  _OperatorHub_  catalog of your OCP Web Console, type  **# Red Hat OpenShift Service Mesh**  into the filter box to locate the Elasticsearch Operator.
+    
+    ![system schema](img/operatorhub.png)
+    
+2.  Click the  _  Red Hat OpenShift Service Mesh provided by Red Hat_  to display information about the Operator.
+    
+3.  Click Install.
+    
+4.  Populate the entries of the  _Create Operator Subscription_  page as follows :
+    
+    1.  Select  _All namespaces_  on the cluster (default)
+        
+    2.  Select the  _stable Update Channel_
+        
+    3.  Select the Automatic Approval Strategy
+        
+    4.  Click Subscribe
+        
+    
+5.  The  _Subscription Overview_  page displays the OpenShift Service Mesh Operator’s installation progress
+    
+6.  After about a minute, at the command line, view the new resource that represents the OpenShift Service Mesh:
+
+```
+ $ oc get ClusterServiceVersion
+ 
+NAME                                         DISPLAY                          VERSION               REPLACES                     PHASE
+elasticsearch-operator.4.2.15-202001171551   Elasticsearch Operator           4.2.15-202001171551                                Succeeded
+jaeger-operator.v1.13.1                      Jaeger Operator                  1.13.1                                             Succeeded
+kiali-operator.v1.0.9                        Kiali Operator                   1.0.9                 kiali-operator.v1.0.8        Succeeded
+servicemeshoperator.v1.0.4                   Red Hat OpenShift Service Mesh   1.0.4                 servicemeshoperator.v1.0.3   Succeeded
+```
+ 
+
+### 1.2. Set Up Service Mesh Operator Maintra (optional)
 
 Now that pre-req operators have been installed, the next step in installing the service mesh is to install the service mesh operator.
 
@@ -506,21 +541,21 @@ Enjoy!
 
 Go to your browser:
 
-Game: [http://blackjack-frontend-blackjack.apps.<"GUID">.open.redhat.com/blackjack.html](http://blackjack-frontend-blackjack.apps.scjocp3-a9fc.open.redhat.com/blackjack.html) (enter a redhat email)
+Game: [http://blackjack-frontend-blackjack.apps.cluster-<"GUID">.<"GUID">.example.opentlc.com/blackjack.html](http://blackjack-frontend-blackjack.apps.cluster-santiago-8980.santiago-8980.example.opentlc.com) (enter a redhat email)
 
-Top Ten users: [http://blackjack-frontend-blackjack.apps.<"GUID">.open.redhat.com/dashboard.html](http://blackjack-frontend-blackjack.apps.scjocp3-a9fc.open.redhat.com/blackjack.html)  
+Top Ten users: [http://blackjack-frontend-blackjack.apps.cluster-<"GUID">.<"GUID">.example.opentlc.com/dashboard.html](http://blackjack-frontend-blackjack.apps.cluster-santiago-8980.santiago-8980.example.opentlc.com/dashboard,html)
 
 
 ## Apply Service Mesh configurations
 
 
-# Go to homework-rhoar
+### Go to osm
 
 ```bash
 cd osm
 ```
 
-## Pre Req
+### Pre Req
 
 (oc - OpenShift Command Line Interface)[https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/]
 (ansible 2.9) [https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html]
@@ -535,7 +570,7 @@ pip install requests-oauthlib --user
 pip install openshift --user
 ```
 
-## Demo Application
+### Demo Application
 
 In order to test Openshift Service Mesh we are going to use the bookinfo app from the istio repository.
 To deploy the application follow the following instructions:
@@ -548,7 +583,7 @@ oc apply -f https://raw.githubusercontent.com/istio/istio/1.4.0/samples/bookinfo
 oc expose service productpage
 ```
 
-## Apply Service Mesh for Namespace Blackjack
+### Apply Service Mesh for Namespace Blackjack
 
 The goal of the homework is to enable service mesh capabilities on the bookinfo namespace.
 The features that need to be enable are:
@@ -598,7 +633,7 @@ In order to acomplish previus requirements and this homework principal goal, I h
 * site.yml: Main playbook file
 
 
-## Variables setup
+### Variables setup
 
 "All" file contains all the variables used by the playbook
 
@@ -617,7 +652,7 @@ control_plane_project_name: "istio-system"
 service_mesh_member_roll_namespaces: " bookinfo"
 ```
 
-## Playbook execution
+### Playbook execution
 
 To execute the playbook use the following command
 
@@ -672,11 +707,11 @@ Add autoscaling to blackjack-payment dc from 2 pods to 10
 $ oc autoscale dc/blackjack-payment --min 2 --max 10 --cpu-percent=80 -n blackjack
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1MTg2NzM0NywtMTg2NjU0Nzc4MSwxOT
-YzMzkzODY4LDMyMzc2NjUwLC0xNTcwNjM5MjUwLDExMjI2MzIw
-NDIsMTA5Mzk1ODAsLTE5MDIyMTIxNzgsLTEzNDY3MzM3MjQsLT
-E5MDc4OTU5OTUsMTAwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5
-MDA4MjksMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzOD
-U3LDE3NzM5OTI3NDgsODYzNDk3MDQxLC04MzE3NDkyMDUsMjEx
-ODYzOTU0NV19
+eyJoaXN0b3J5IjpbMTMyNTU0NDgxNSwyNDQ0ODI2MzgsLTE4NT
+MyNjYwNjcsMjA1MTg2NzM0NywtMTg2NjU0Nzc4MSwxOTYzMzkz
+ODY4LDMyMzc2NjUwLC0xNTcwNjM5MjUwLDExMjI2MzIwNDIsMT
+A5Mzk1ODAsLTE5MDIyMTIxNzgsLTEzNDY3MzM3MjQsLTE5MDc4
+OTU5OTUsMTAwMzg2Mjk4NSwtMzQyNjg2NTAxLDE3Mzg5MDA4Mj
+ksMjA4MDIzOTAyMSwtMTkzNTQwODc1NSwxMTQwNzkzODU3LDE3
+NzM5OTI3NDhdfQ==
 -->
